@@ -1,17 +1,21 @@
 <h1>New Article</h1>
 
-<%= form_for @article do |f| %>
+<div class="cr_sectshow">
 
-  <p>
-    <%= f.label :body %>
-    <%= f.text_area :text %>
-  </p>
+  <%= form_for @article do |f| %>
 
-  <p>
-    <%= f.submit %>
-  </p>
+    <p>
+      <%= f.label :body %>
+      <%= f.text_area :text %>
+    </p>
 
-<% end %>
+    <p>
+      <%= f.submit %>
+    </p>
+
+  <% end %>
+
+</div>
 
 <p id="text_show"></p>
 

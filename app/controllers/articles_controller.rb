@@ -14,11 +14,17 @@ class ArticlesController < ApplicationController
     @body = text
 
     if request.xhr?
-      raise params.inspect
-
+      render json: {text: @body}
     else
       render json: @body
     end
     
   end
 end
+
+
+    # respond_to do |format|
+    #   format.json {
+    #     render plain: "hello world"
+    #   }
+    # end
