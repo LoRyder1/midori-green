@@ -14,3 +14,26 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function() {
+
+  $('#submit').on('click', function (event) {
+    event.preventDefault();
+    console.log('whatsup');
+
+    $.ajax({
+      method: 'POST',
+      url: "/articles",
+      dataType: 'JSON',
+      data: { article: {text: "adlfsj"}},
+      success: function (data) {
+        console.log('hey');
+      },
+      error: function() {
+        console.log('fail');
+      }
+    });
+
+  })
+
+});
