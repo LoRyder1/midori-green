@@ -16,8 +16,10 @@ this.Horses = React.createClass({
   },
 
   addHorse: function(horse) {
-    
-  }
+    horses = this.state.horses.slice();
+    horses.push(horse);
+    this.setState({horses: horses});
+  },
 
   render: function() {
     return (
