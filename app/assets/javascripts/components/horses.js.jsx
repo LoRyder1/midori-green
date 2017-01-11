@@ -5,6 +5,20 @@ this.Horses = React.createClass({
     };
   },
 
+  getDefaultProps: function() {
+    return { horses: [] };
+  },
+
+  updateHorse: function(horse, data) {
+    index = this.state.horses.indexOf(horse);
+    horses = React.addons.update(this.state.horses, { $splice: [[index, 1, data]] });
+    this.replaceState({ horses: horses })
+  },
+
+  addHorse: function(horse) {
+    
+  }
+
   render: function() {
     return (
       <div className='horses'>
