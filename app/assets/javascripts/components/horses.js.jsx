@@ -21,6 +21,12 @@ this.Horses = React.createClass({
     this.setState({horses: horses});
   },
 
+  deleteHorse: function(horse) {
+    index = this.state.horses.indexOf(horse);
+    horses = React.addons.update(this.state.horses, { $splice: [[index, 1]] });
+    this.replaceState({ horses: horses });
+  },
+
   render: function() {
     return (
       <div className='horses'>
