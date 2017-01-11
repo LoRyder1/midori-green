@@ -113,3 +113,40 @@ this.HorseForm = React.createClass({
 
 // ===== // =====// =====// =====// =====// =====// =====// =====// =====// =====
 
+this.Horse = React.createClass({
+  getInitialState: function() {
+    return { edit: false }
+  },
+
+  handleToggle: function(e) {
+    e.preventDefault();
+    this.setState({edit: !this.state.edit })
+  },
+
+  handleDelete: function(e) {
+    e.preventDefault();
+    var request = $.ajax({
+      method: 'DELETE',
+      url: "/horses/" + this.props.horse.id,
+      dataType: 'JSON'
+    });
+
+    request.done( () => {
+      this.props.handleDeleteHorse(this.props.horse)
+    });
+  },
+
+  
+
+  render: function() {
+
+  }
+})
+
+
+
+
+
+
+
+
