@@ -28,6 +28,9 @@ this.Horses = React.createClass({
   },
 
   render: function() {
+    var el = this;
+    var items = this.state.horses;
+
     return (
       <div className='horses'>
         <h2 className='name'>Horses</h2>
@@ -44,6 +47,9 @@ this.Horses = React.createClass({
           </tr>
           </thead>
           <tbody>
+          {items.map(function(horse, i) {
+            return <Horse horse={horse} key={i} handleDeleteHorse={el.deleteHorse} handleEditHorse={el.updateHorse} />
+          })}
           </tbody>
         </table>
       </div>
