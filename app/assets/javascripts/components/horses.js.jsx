@@ -68,9 +68,48 @@ this.HorseForm = React.createClass({
     return this.state.name && this.state.horse_type && this.state.age
   },
 
-  
+  handleChange: function(e) {
+    var change = {};
+    var targetName = e.target.name;
+    change[targetName] = e.target.value;
+    this.setState(change);
+  },
+
+  handleSubmit: function(e) {
+
+    var request = $.ajax({
+      method: 'POST',
+      url: "/horses",
+      dataType: 'JSON',
+      data: {horse: this.state}
+    });
+
+    // An arrow function expression lexically binds the 'this' value, Arrow fxns are anonymous
+    request.done( (data) => {
+      this.props.handleNewHorse(data);
+      this.setState(this.getInitialState());
+    })
+  },
+
+  render: function() {
+    var curState = this.state;
+    return (
+      <form className='form-inline' onSubmit={this.handleSubmit}>
+        <div className='form-group'>
+          <input type='text' className='form-control' placeholder='Name' name='name' value={curState.name} onChange={this.handleChange} />
+        </div>
+        <div className='form-group'>
+          <input type='text' className='form-control' placeholder='Breed' name='breed' value={curState.breed} onChange={this.handleChange} />
+        </div>
+        <div className='form-group'>
+          <input type='text' className='form-control' placeholder='Age' name='year' value={curState.year} onChange={this.handleChange} />
+        <button type='submit' className='btn btn-primary' disabled={!this.valid()}>Add Horse</button>
+        </div>
+      </form>
+    )
+  }
 })
 
 
-
+// ===== // =====// =====// =====// =====// =====// =====// =====// =====// =====
 
