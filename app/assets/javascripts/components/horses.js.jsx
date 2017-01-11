@@ -56,3 +56,21 @@ this.Horses = React.createClass({
     )
   }
 })
+
+// =====// =====// =====// =====// =====// =====// =====// =====// =====// =====// =====// =====
+
+this.HorseForm = React.createClass({
+  getInitialState: function() {
+    return { name: '', horse_type: '', age: ''};
+  },
+
+  valid: function() {
+    return this.state.name && this.state.horse_type && this.state.age
+  },
+
+  
+})
+
+
+
+
