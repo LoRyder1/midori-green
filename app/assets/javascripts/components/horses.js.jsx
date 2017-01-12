@@ -179,6 +179,24 @@ this.Horse = React.createClass({
     )
   },
 
+  horseRow: function() {
+    var propHorse = this.props.horse;
+
+    return (
+      <tr>
+        <td>
+          <a href={"horses/" + propHorse.id + "-" propHorse.name}>{propHorse.name}</a>
+        </td>
+        <td> {propHorse.breed} </td>
+        <td> {propHorse.age} </td>
+        <td>
+          <a className="btn btn-default" onClick={this.handleToggle}>Edit</a>
+          <a className="btn btn-danger" onClick={this.handleDelete}>Delete</a>
+        </td>
+      </tr>
+    )
+  },
+
   render: function() {
 
   }
