@@ -198,7 +198,11 @@ this.Horse = React.createClass({
   },
 
   render: function() {
-
+    if (this.state.edit) {
+      return this.horseForm();
+    } else {
+      return this.horseRow();
+    }
   }
 })
 
