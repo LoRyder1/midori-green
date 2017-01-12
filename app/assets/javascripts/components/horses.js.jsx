@@ -157,6 +157,28 @@ this.Horse = React.createClass({
     })
   },
 
+  horseForm: function() {
+    var propHorse = this.props.horse;
+
+    return (
+      <tr>
+        <td>
+          <input className="form-control" type="text" defaultValue={propHorse.name} ref="name" />
+        </td>
+        <td>
+          <input className="form-control" type="text" defaultValue={propHorse.breed} ref="breed" />
+        </td>
+        <td>
+          <input className="form-control" type="text" defaultValue={propHorse.age} ref="age" />
+        </td>
+        <td>
+          <a className="btn btn-default" onClick={this.handleEdit}>Update</a>
+          <a className="btn btn-default" onClick={this.handleToggle}>Cancel</a>
+        </td>
+      </tr>
+    )
+  },
+
   render: function() {
 
   }
