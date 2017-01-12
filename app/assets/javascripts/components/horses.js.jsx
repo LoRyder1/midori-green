@@ -136,7 +136,26 @@ this.Horse = React.createClass({
     });
   },
 
-  
+  handleEdit: function(e) {
+    e.preventDefault();
+    var data = {
+      name: ReactDOM.findDOMNode(this.refs.name).value,
+      breed: ReactDOM.findDOMNode(this.refs.breed).value,
+      age: ReactDOM.findDOMNode(this.refs.age).value
+    }
+
+    var request = $.ajax({
+      method: 'PUT',
+      url: "/horses/" + this.props.horse.id,
+      dataType: 'JSON',
+      data: { horse: data }
+    });
+
+    request.done( (data) => {
+      this.setState({ edit: false });
+      this.props.handleEditHorse(this.props.horse, data);
+    })
+  },
 
   render: function() {
 
